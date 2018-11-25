@@ -26,7 +26,6 @@
 </table>
 <%= link_to 'Add new Global Link', new_global_link_path %>
 <br>
-</br>
 <h3>Links</h3>
 <tbody>
     <% @mylinks.each do |mylink| %>
@@ -46,22 +45,6 @@
 
 <br>
 <%= link_to 'Add New Link', new_user_mylink_path(user_id: @user) %>
-<!--
-<h3>Role Specific Links</h3>
-<tbody>
-    <% @role_specific_links.each do |role_specific_link| %>
-        <p>
-            <td>
-                <% if role_specific_link.role_id == @user.role%>
-                    <%= role_specific_link.link %>
-                    <%= role_specific_link.role_id%>
-                <% end %>
-            </td>
-        </p>
-        
-    <% end %>
-</tbody>
--->
 <h3>Role Specific Links Testing</h3>
 <tbody>
     <% @role_specs.each do |role_specific_link| %>
@@ -76,6 +59,4 @@
     <% end %>
 </tbody>
 <br>
-</br>
-<!-- <%= link_to 'Add New Role Specific Link', new_user_role_specific_link_path(user_id: @user) %> -->
 <%= link_to 'Add New Role Specific Link', new_role_spec_path %>

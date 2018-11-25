@@ -1,4 +1,3 @@
-<!-- <%= form_with(model: role_specific_link, local: true) do |form| %> -->
 <%= form_for [@user, @role_specific_link] do |form| %>
   <% if role_specific_link.errors.any? %>
     <div id="error_explanation">
