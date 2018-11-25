@@ -1,6 +1,8 @@
 class GlobalLinksController < ApplicationController
+  before_action :authenticate_user!
+  before_action :admin_only, :except => :show
   before_action :set_global_link, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /global_links
   # GET /global_links.json
   def index
@@ -62,6 +64,11 @@ class GlobalLinksController < ApplicationController
   end
 
   private
+    def admin_only
+      unless current_user.admin?
+        redirect_to root_path, :alert => "Access denied."
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_global_link
       @global_link = GlobalLink.find(params[:id])

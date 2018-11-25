@@ -1,3 +1,4 @@
+<p><%= link_to 'Back', users_path(@user)%></p>
 <h3>User</h3>
 <p>Name: <%= @user.name if @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
@@ -23,7 +24,7 @@
   </tbody>
 
 </table>
-<%= link_to 'New Global Link', new_global_link_path %>
+<%= link_to 'Add new Global Link', new_global_link_path %>
 <br>
 </br>
 <h3>Links</h3>
@@ -67,8 +68,8 @@
         <tr>
             <% if role_specific_link.role_id == @user.role%>
             <td> <%= link_to role_specific_link.link, role_spec_path %> </tr>
-            <td> <%= role_specific_link.role_id%> </tr>
-            <td><%= link_to 'Edit', edit_role_spec_path(role_specific_link) %></td>
+            <td> Role: <%= role_specific_link.role_id%> </tr>
+            <td><%= link_to 'Edit Link', edit_role_spec_path(role_specific_link) %></td>
             <% end %>
         </tr>
         
@@ -77,4 +78,4 @@
 <br>
 </br>
 <!-- <%= link_to 'Add New Role Specific Link', new_user_role_specific_link_path(user_id: @user) %> -->
-<%= link_to 'New Role Spec', new_role_spec_path %>
+<%= link_to 'Add New Role Specific Link', new_role_spec_path %>
