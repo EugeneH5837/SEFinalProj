@@ -25,13 +25,6 @@ ActiveRecord::Schema.define(version: 20181125042555) do
     t.integer "user_id"
   end
 
-  create_table "role_specific_links", force: :cascade do |t|
-    t.string "link"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "role_id"
-  end
-
   create_table "role_specs", force: :cascade do |t|
     t.string "link"
     t.integer "role_id"
