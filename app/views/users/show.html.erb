@@ -1,3 +1,80 @@
 <h3>User</h3>
 <p>Name: <%= @user.name if @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
+<p>Role: <%= @user.role if @user.role%></p>
+<h3>Global Links</h3>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @global_links.each do |global_links| %>
+      <tr>
+        <td><%= link_to global_links.link, global_link_path %></td>
+        <td><%= link_to 'Edit', edit_global_link_path(global_links) %></td>
+        <% if false %>
+        <td><%= link_to "Access Application", @tier_one_link_launching_applications_path %></td>
+        <td><%= link_to "Access Application", @launching_applications %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+<%= link_to 'New Global Link', new_global_link_path %>
+<br>
+</br>
+<h3>Links</h3>
+<tbody>
+    <% @mylinks.each do |mylink| %>
+      <tr>
+        <p><%= link_to mylink.link, user_mylink_path(@user.id, mylink.id) %> 
+            <td><%= link_to 'Remove', [@user, mylink], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </p>
+        
+        <% if false %>
+        
+        <td><%= link_to 'Edit', edit_mylink_path(mylink) %></td>
+        <td><%= link_to 'Destroy', mylink, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+
+<br>
+<%= link_to 'Add New Link', new_user_mylink_path(user_id: @user) %>
+<!--
+<h3>Role Specific Links</h3>
+<tbody>
+    <% @role_specific_links.each do |role_specific_link| %>
+        <p>
+            <td>
+                <% if role_specific_link.role_id == @user.role%>
+                    <%= role_specific_link.link %>
+                    <%= role_specific_link.role_id%>
+                <% end %>
+            </td>
+        </p>
+        
+    <% end %>
+</tbody>
+-->
+<h3>Role Specific Links Testing</h3>
+<tbody>
+    <% @role_specs.each do |role_specific_link| %>
+        <tr>
+            <% if role_specific_link.role_id == @user.role%>
+            <td> <%= link_to role_specific_link.link, role_spec_path %> </tr>
+            <td> <%= role_specific_link.role_id%> </tr>
+            <td><%= link_to 'Edit', edit_role_spec_path(role_specific_link) %></td>
+            <% end %>
+        </tr>
+        
+    <% end %>
+</tbody>
+<br>
+</br>
+<!-- <%= link_to 'Add New Role Specific Link', new_user_role_specific_link_path(user_id: @user) %> -->
+<%= link_to 'New Role Spec', new_role_spec_path %>

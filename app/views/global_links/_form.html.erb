@@ -1,0 +1,22 @@
+<%= form_with(model: global_link, local: true) do |form| %>
+  <% if global_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(global_link.errors.count, "error") %> prohibited this global_link from being saved:</h2>
+
+      <ul>
+      <% global_link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_field :link, id: :global_link_link %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

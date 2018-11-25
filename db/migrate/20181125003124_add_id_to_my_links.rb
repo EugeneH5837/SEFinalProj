@@ -1,0 +1,5 @@
+class AddIdToMyLinks < ActiveRecord::Migration[5.1]
+  def change
+    add_column :mylinks, :user_id, :integer
+  end
+end

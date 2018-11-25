@@ -1,7 +1,10 @@
 class User < ApplicationRecord
-  enum role: [:user, :vip, :admin]
+  has_many :mylinks
+  has_many :role_specific_links
+  has_many :role_specs
+  enum role: [:user, :vip, :admin, :void]
   after_initialize :set_default_role, :if => :new_record?
-
+  
   def set_default_role
     self.role ||= :user
   end
