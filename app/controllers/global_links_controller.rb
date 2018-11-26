@@ -30,7 +30,7 @@ class GlobalLinksController < ApplicationController
 
     respond_to do |format|
       if @global_link.save
-        format.html { redirect_to @global_link, notice: 'Global link was successfully created.' }
+        format.html { redirect_to global_links_path, notice: 'Global link was successfully created.' }
         format.json { render :show, status: :created, location: @global_link }
       else
         format.html { render :new }
@@ -58,7 +58,7 @@ class GlobalLinksController < ApplicationController
   def destroy
     @global_link.destroy
     respond_to do |format|
-      format.html { redirect_to global_links_url, notice: 'Global link was successfully destroyed.' }
+      format.html { redirect_to global_links_url, notice: 'Global link was successfully removed.' }
       format.json { head :no_content }
     end
   end

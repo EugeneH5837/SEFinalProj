@@ -23,7 +23,7 @@ a {
   color: #000;
 
   &:visited {
-    color: #666;
+    color: #000;
   }
 
   &:hover {
@@ -31,7 +31,23 @@ a {
     background-color: #000;
   }
 }
+.alignemnt-fix{
+  padding-left: 10px;
+}
+.btn-xs {
+  color: #000;
 
+  &:visited {
+    color: #000;
+  }
+}
+.role {
+  color: #000;
+  &:hover {
+    color: #fff;
+    background-color: #307CFB;
+  }
+}
 th {
   padding-bottom: 5px;
 }
@@ -45,7 +61,13 @@ div {
     margin-bottom: 10px;
   }
 }
+.small-button{
+  background-color: #307CFB;
 
+  &:hover {
+    background-color: #286AD6;
+  }
+}
 #notice {
   color: green;
 }

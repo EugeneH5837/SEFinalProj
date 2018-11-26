@@ -13,50 +13,57 @@
   <tbody>
     <% @global_links.each do |global_links| %>
       <tr>
-        <td><%= link_to global_links.link, global_link_path %></td>
-        <td><%= link_to 'Edit', edit_global_link_path(global_links) %></td>
-        <% if false %>
-        <td><%= link_to "Access Application", @tier_one_link_launching_applications_path %></td>
-        <td><%= link_to "Access Application", @launching_applications %></td>
-        <% end %>
+        <p>
+        <td><%= link_to global_links.link, global_links, class: "btn btn-primary btn-xs" %></td>
+        <!-- <td class="btn btn-primary"> <%= link_to global_links.link, global_links, :class => "btn-xs" %> </td> -->
+        <td><%= link_to 'Edit', edit_global_link_path(global_links), class: "btn button-xs btn-xs" %></td>
+        <!--<td><%= link_to '<button type = "button" class = "button-xs">Edit</button>'.html_safe, edit_global_link_path(global_links) %> </td> -->
+        </p>
       </tr>
     <% end %>
   </tbody>
 
 </table>
-<%= link_to 'Add new Global Link', new_global_link_path %>
+<br>
+<!-- <td><%= link_to '<button type = "button" class = "button-xs">Add New Global Link</button>'.html_safe, new_global_link_path %> </td> -->
+<td><%= link_to "Add New Global Link", new_global_link_path, class: "btn button-xs alignemnt-fix"%>
+
+<br>
 <br>
 <h3>Links</h3>
 <tbody>
-    <% @mylinks.each do |mylink| %>
-      <tr>
-        <p><%= link_to mylink.link, user_mylink_path(@user.id, mylink.id) %> 
-            <td><%= link_to 'Remove', [@user, mylink], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </p>
-        
-        <% if false %>
-        
-        <td><%= link_to 'Edit', edit_mylink_path(mylink) %></td>
-        <td><%= link_to 'Destroy', mylink, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
-      </tr>
-    <% end %>
-  </tbody>
+  <% @mylinks.each do |mylink| %>
+    <tr>
+      <p> 
+      <%= link_to mylink.link, user_mylink_path(@user.id, mylink.id), class: "btn btn-primary btn-xs" %> 
+      <td><%= link_to 'Edit', edit_user_mylink_path(@user.id, mylink.id), class: "btn button-xs btn-xs" %></td>
+      <td><%= link_to 'Remove', [@user, mylink], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn button-xs btn-xs" %></td>        
+      </p>
+    </tr>
+  <% end %>
+</tbody>
 
 <br>
-<%= link_to 'Add New Link', new_user_mylink_path(user_id: @user) %>
-<h3>Role Specific Links Testing</h3>
+<%= link_to 'Add New Link', new_user_mylink_path(user_id: @user), class: "button button-xs" %>
+<br>
+<br>
+
+<h3>Role Specific Links</h3>
 <tbody>
     <% @role_specs.each do |role_specific_link| %>
         <tr>
+          <p>
             <% if role_specific_link.role_id == @user.role%>
-            <td> <%= link_to role_specific_link.link, role_spec_path %> </tr>
-            <td> Role: <%= role_specific_link.role_id%> </tr>
-            <td><%= link_to 'Edit Link', edit_role_spec_path(role_specific_link) %></td>
+            <td> <%= link_to role_specific_link.link, role_spec_path, class: "btn btn-primary btn-xs" %> </tr>
+            <td><%= link_to 'Edit Link', edit_role_spec_path(role_specific_link), class: "btn button-xs btn-xs" %></td>
+            <!-- <td class = "btn button-xs"> <button type = " btn"> Role: <%= role_specific_link.role_id%></button> </td> -->
+            <td><button class = "btn button-xs role">Role: <%= role_specific_link.role_id%></button> </td>
             <% end %>
+          </p>
         </tr>
         
     <% end %>
 </tbody>
 <br>
-<%= link_to 'Add New Role Specific Link', new_role_spec_path %>
+<br>
+<%= link_to 'Add New Role Specific Link', new_role_spec_path, class: "button button-xs" %>

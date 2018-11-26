@@ -57,7 +57,7 @@ class Users::RoleSpecificLinksController < ApplicationController
   def destroy
     @role_specific_link.destroy
     respond_to do |format|
-      format.html { redirect_to role_specific_links_url, notice: 'Role specific link was successfully destroyed.' }
+      format.html { redirect_to role_specific_links_url, notice: 'Role specific link was successfully removed.' }
       format.json { head :no_content }
     end
   end

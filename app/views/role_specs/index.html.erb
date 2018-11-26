@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Role Specs</h1>
+<h1>Role Specific Links</h1>
 
 <table>
   <thead>
@@ -14,11 +14,11 @@
   <tbody>
     <% @role_specs.each do |role_spec| %>
       <tr>
-        <td><%= role_spec.link %></td>
-        <td><%= role_spec.role_id %></td>
-        <td><%= link_to 'Show', role_spec %></td>
-        <td><%= link_to 'Edit', edit_role_spec_path(role_spec) %></td>
-        <td><%= link_to 'Destroy', role_spec, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to role_spec.link, role_spec, class: "btn button-xs btn-xs" %></td>
+        <td><button class = "btn button-xs role btn-xs"><%= role_spec.role_id %></button></td>
+        <td><%= link_to 'Show', role_spec, class: "btn button-xs btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_role_spec_path(role_spec), class: "btn button-xs btn-xs" %></td>
+        <td><%= link_to 'Remove', role_spec, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn button-xs btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,6 +26,7 @@
 
 <br>
 
-<%= link_to 'New Role Spec', new_role_spec_path %>
+<%= link_to 'Add New Role Specific Link', new_role_spec_path, class: "btn button-xs" %>
 <br>
-<%= link_to 'Back', users_path%>
+<br>
+<%= link_to 'Back', users_path %>

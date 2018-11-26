@@ -12,8 +12,13 @@
         </tbody>
       </table>
     </div>
-    <h3><%= link_to 'View Role Links', role_specs_path %> <br>
-    <%= link_to 'View Global Links', global_links_path %> <br>
-    <%= link_to 'Create New User', new_user_registration_path %></h3>   
+    <div> <%= link_to 'View Role Links', role_specs_path, class: "btn btn-primary" %> <br> </div >
+    <div> <%= link_to 'View Global Links', global_links_path, class: "btn btn-primary" %> <br> </div>
+    <div> <%= link_to 'Create New User', new_user_registration_path, class: "btn btn-primary" %> </div>
+    <!--
+    <%= link_to '<button type = "button" class = "button-xs">View Role Links</button>'.html_safe, role_specs_path %>
+    <%= link_to '<button type = "button" class = "button-xs">View Global Links</button>'.html_safe, global_links_path %> 
+    <%= link_to '<button type = "button" class = "button-xs">Create New User</button>'.html_safe, new_user_registration_path %>
+    -->
   </div>
 </div>

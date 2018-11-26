@@ -13,10 +13,9 @@
   <tbody>
     <% @global_links.each do |global_link| %>
       <tr>
-        <td><%= global_link.link %></td>
-        <td><%= link_to 'Show', global_link %></td>
-        <td><%= link_to 'Edit', edit_global_link_path(global_link) %></td>
-        <td><%= link_to 'Destroy', global_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to global_link.link, global_link, class: "btn button-xs btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_global_link_path(global_link), class: "btn button-xs btn-xs" %></td>
+        <td><%= link_to 'Remove', global_link, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn button-xs btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>

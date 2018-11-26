@@ -17,11 +17,7 @@
   </div>
 
   <div class="field">
-    <!-- <%= form.label :role_id %>
-    <%= form.text_field :role_id, id: :role_spec_role_id %> -->
     <%= form.select(:role, RoleSpec.role_ids.keys.map {|role_id| [role_id.titleize,role_id]})%>
-    <%= form.submit 'Confirm', :class => 'button-xs'%>
-
   </div>
 
   <div class="actions">

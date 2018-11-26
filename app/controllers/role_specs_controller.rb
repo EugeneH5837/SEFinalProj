@@ -30,7 +30,7 @@ class RoleSpecsController < ApplicationController
     
     respond_to do |format|
       if @role_spec.save
-        format.html { redirect_to @role_spec, notice: 'Role spec was successfully created.' }
+        format.html { redirect_to role_specs_url, notice: 'Role Specific Link was successfully created.' }
         format.json { render :show, status: :created, location: @role_spec }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class RoleSpecsController < ApplicationController
   def update
     respond_to do |format|
       if @role_spec.update(role_spec_params)
-        format.html { redirect_to @role_spec, notice: 'Role spec was successfully updated.' }
+        format.html { redirect_to role_specs_url, notice: 'Role Speciic Link was successfully edited.' }
         format.json { render :show, status: :ok, location: @role_spec }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class RoleSpecsController < ApplicationController
   def destroy
     @role_spec.destroy
     respond_to do |format|
-      format.html { redirect_to role_specs_url, notice: 'Role spec was successfully destroyed.' }
+      format.html { redirect_to role_specs_url, notice: 'Role spec was successfully removed.' }
       format.json { head :no_content }
     end
   end

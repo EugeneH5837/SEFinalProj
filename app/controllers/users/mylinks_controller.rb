@@ -57,7 +57,7 @@ class Users::MylinksController < ApplicationController
   def destroy
     @mylink.destroy
     respond_to do |format|
-      format.html { redirect_to user_url(@mylink.user_id), notice: 'Mylink was successfully destroyed.' }
+      format.html { redirect_to user_url(@mylink.user_id), notice: 'Mylink was successfully removed.' }
       format.json { head :no_content }
     end
   end

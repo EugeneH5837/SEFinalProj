@@ -17,8 +17,11 @@
   </div>
 
   <div class="field">
+    <!--
     <%= form.label :role_id %>
-    <%= form.number_field :role_id, id: :role_specific_link_role_id %>
+    <%= form.number_field :role_id, id: :role_specific_link_role_id %> -->
+    <%= form.select(:role, RoleSpec.role_id.keys.map {|role_id| [role_id.titleize,role_id]})%>
+    <%= f.submit 'Change Role', :class => 'button-xs'%>
   </div>
 
   <div class="actions">
