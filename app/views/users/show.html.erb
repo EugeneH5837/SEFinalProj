@@ -43,7 +43,7 @@
   </tbody>
 
   <br>
-  <%= link_to 'Add New Link', new_user_mylink_path(user_id: @user), class: "button button-xs" %>
+  <%= link_to 'Add New Link', new_user_mylink_path(user_id: @user), class: "button button-xs btn-xs" %>
   <br>
   <br>
 
@@ -54,7 +54,7 @@
             <p>
               <% if role_specific_link.role_id == @user.role%>
               <td> <%= link_to role_specific_link.link, role_spec_path, class: "btn btn-primary btn-xs" %> </tr>
-              <td><%= link_to 'Edit Link', edit_role_spec_path(role_specific_link), class: "btn button-xs btn-xs" %></td>
+              <td><%= link_to 'Edit', edit_role_spec_path(role_specific_link), class: "btn button-xs btn-xs" %></td>
               <td><button class = "btn button-xs role">Role: <%= role_specific_link.role_id%></button> </td>
               <% end %>
             </p>

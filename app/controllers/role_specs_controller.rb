@@ -30,7 +30,7 @@ class RoleSpecsController < ApplicationController
     
     respond_to do |format|
       if @role_spec.save
-        format.html { redirect_to role_specs_url, notice: 'Role Specific Link was successfully created.' }
+        format.html { redirect_to role_specs_url }
         format.json { render :show, status: :created, location: @role_spec }
       else
         format.html { render :new }
@@ -45,21 +45,13 @@ class RoleSpecsController < ApplicationController
     @role_spec = RoleSpec.find(params[:id])
     respond_to do |format|
       if @role_spec.update_attributes(role_spec_params)
-        format.html { redirect_to role_specs_url, notice: 'Role Speciic Link was successfully edited.' }
+        format.html { redirect_to role_specs_url }
         format.json { render :show, status: :ok, location: @role_spec }
       else
         format.html { render :edit }
         format.json { render json: @role_spec.errors, status: :unprocessable_entity }
       end
     end 
-=begin
-    @user = User.find(params[:id])
-    if @user.update_attributes(secure_params)
-      redirect_to users_path, :notice => "User updated."
-    else
-      redirect_to users_path, :alert => "Unable to update user."
-    end
-=end
   end
 
   # DELETE /role_specs/1
@@ -67,7 +59,7 @@ class RoleSpecsController < ApplicationController
   def destroy
     @role_spec.destroy
     respond_to do |format|
-      format.html { redirect_to role_specs_url, notice: 'Role spec was successfully removed.' }
+      format.html { redirect_to role_specs_url}
       format.json { head :no_content }
     end
   end

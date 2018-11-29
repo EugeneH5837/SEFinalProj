@@ -28,15 +28,16 @@ class GlobalLinksController < ApplicationController
   def create
     @global_link = GlobalLink.new(global_link_params)
 
-    respond_to do |format|
+
       if @global_link.save
-        format.html { redirect_to global_links_path, notice: 'Global link was successfully created.' }
-        format.json { render :show, status: :created, location: @global_link }
+        redirect_to global_links_path 
+        #flash[:notice] = 'Global Links Sucessfully Created.'
+        
       else
         format.html { render :new }
         format.json { render json: @global_link.errors, status: :unprocessable_entity }
       end
-    end
+    
   end
 
   # PATCH/PUT /global_links/1
@@ -44,8 +45,9 @@ class GlobalLinksController < ApplicationController
   def update
     respond_to do |format|
       if @global_link.update(global_link_params)
-        format.html { redirect_to @global_link, notice: 'Global link was successfully updated.' }
-        format.json { render :show, status: :ok, location: @global_link }
+        redirect_to global_links_path
+        #flash[:notice] = 'Global Links Sucessfully Edited.'
+        #format.json { render :show, status: :ok, location: @global_link }
       else
         format.html { render :edit }
         format.json { render json: @global_link.errors, status: :unprocessable_entity }
@@ -58,7 +60,7 @@ class GlobalLinksController < ApplicationController
   def destroy
     @global_link.destroy
     respond_to do |format|
-      format.html { redirect_to global_links_url, notice: 'Global link was successfully removed.' }
+      format.html { redirect_to global_links_url}
       format.json { head :no_content }
     end
   end

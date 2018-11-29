@@ -2,5 +2,7 @@
 <p><%= User.count%> employees in the system</p>
 <p><%= link_to "Access User Settings", users_path%></p>
 <% if user_signed_in? %>
-  <p><%= link_to "Access Your links", current_user %> </p>
+  <% if !current_user.try(:admin?) %>
+    <p><%= link_to "Access Your links", current_user %> </p>
+  <% end %>
 <% end %>

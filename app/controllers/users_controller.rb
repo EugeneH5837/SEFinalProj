@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   def show
     @global_links = GlobalLink.all
     @mylinks = @user.mylinks
-    @role_specific_links = RoleSpecificLink.all
     @user = User.find(params[:id])
     @role_specs = RoleSpec.all
     unless current_user.admin?
@@ -33,14 +32,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if params[:user][:password].blank?
       if @user.update_without_password(secure_params.except(:password, :password_confirmation))
-        redirect_to user_path
-        flash[:notice] = "User updated."
+        redirect_to users_path
+        flash.now[:notice] = "User updated."
       else
         render :action => 'edit'
       end
     else
       if @user.update_attributes(secure_params)
-        redirect_to user_path
+        redirect_to users_path
         flash[:notice] = "User updated."
       else
         render :action => 'edit'

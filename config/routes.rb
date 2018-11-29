@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :users do 
     resources :mylinks, controller: "users/mylinks"
   end
-  #get 'create_user' => 'users#create', as: :create_user
   resources :users do 
     resources :role_specific_links, controller: "users/role_specific_links"
   end
