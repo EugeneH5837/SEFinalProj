@@ -66,7 +66,7 @@ class GlobalLinksController < ApplicationController
   private
     def admin_only
       unless current_user.admin?
-        redirect_to root_path, :alert => "Access denied."
+        redirect_to root_path, :alert => "Access denied you are not an Admin."
       end
     end
     # Use callbacks to share common setup or constraints between actions.

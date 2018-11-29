@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :role_specs
   resources :global_links
   root to: 'visitors#index'
-  devise_for :users, controllers: { registrations: "registrations" }
+  get '/testing' , to: 'users#edit'
+  devise_for :users, controllers: { registrations: "registrations" }, :path_prefix => 'd'
   resources :users do 
     resources :mylinks, controller: "users/mylinks"
   end

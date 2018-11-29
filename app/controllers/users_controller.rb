@@ -15,21 +15,36 @@ class UsersController < ApplicationController
     @role_specs = RoleSpec.all
     unless current_user.admin?
       unless @user == current_user
-        redirect_to root_path, :alert => "Access denied."
+        redirect_to root_path, :alert => "Access denied you are not an Admin."
       end
     end
   end
+
 
   def new 
     @user = User.new 
   end
 
+  def edit  
+    @user = User.find(params[:id])
+  end 
+
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(secure_params)
-      redirect_to users_path, :notice => "User updated."
+    if params[:user][:password].blank?
+      if @user.update_without_password(secure_params.except(:password, :password_confirmation))
+        redirect_to user_path
+        flash[:notice] = "User updated."
+      else
+        render :action => 'edit'
+      end
     else
-      redirect_to users_path, :alert => "Unable to update user."
+      if @user.update_attributes(secure_params)
+        redirect_to user_path
+        flash[:notice] = "User updated."
+      else
+        render :action => 'edit'
+      end
     end
   end
 
@@ -41,16 +56,20 @@ class UsersController < ApplicationController
 
   private
 
+  def needs_password?(user, params)
+    (params[:user].has_key?(:email) && user.email != params[:user][:email]) || !params[:user][:password].blank?
+  end
+  
   def admin_only
     unless current_user.admin?
-      redirect_to root_path, :alert => "Access denied."
+      redirect_to root_path, :alert => "Access denied you are not an Admin."
     end
   end
   def set_user 
     @user = User.find(params[:id])
   end 
   def secure_params
-    params.require(:user).permit(:role)
+    params.require(:user).permit(:role, :name, :email, :password, :password_confirmation)
   end
 
 end

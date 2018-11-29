@@ -42,15 +42,24 @@ class RoleSpecsController < ApplicationController
   # PATCH/PUT /role_specs/1
   # PATCH/PUT /role_specs/1.json
   def update
+    @role_spec = RoleSpec.find(params[:id])
     respond_to do |format|
-      if @role_spec.update(role_spec_params)
+      if @role_spec.update_attributes(role_spec_params)
         format.html { redirect_to role_specs_url, notice: 'Role Speciic Link was successfully edited.' }
         format.json { render :show, status: :ok, location: @role_spec }
       else
         format.html { render :edit }
         format.json { render json: @role_spec.errors, status: :unprocessable_entity }
       end
+    end 
+=begin
+    @user = User.find(params[:id])
+    if @user.update_attributes(secure_params)
+      redirect_to users_path, :notice => "User updated."
+    else
+      redirect_to users_path, :alert => "Unable to update user."
     end
+=end
   end
 
   # DELETE /role_specs/1
@@ -66,7 +75,7 @@ class RoleSpecsController < ApplicationController
   private
     def admin_only
       unless current_user.admin?
-        redirect_to root_path, :alert => "Access denied."
+        redirect_to root_path, :alert => "Access denied you are not an Admin."
       end
     end
     # Use callbacks to share common setup or constraints between actions.
