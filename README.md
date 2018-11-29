@@ -5,5 +5,7 @@ To run, install bundles with command: bundles install
 Start server with: rails s   
 Access server by going to [localhost](http://localhost:3000)  
 
-Generated using [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
+Generated using [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem with devise
 
+Ruby 2.4.4  
+Rails 5.1.6
