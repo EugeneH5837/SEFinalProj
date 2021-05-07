@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 ruby '2.4.4'
-gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
+gem 'rails', '~> 5.2.4', '>= 5.2.4.6'
 gem 'sqlite3'
 gem 'puma', '~> 3.12', '>= 3.12.6'
 gem 'sass-rails', '~> 5.0', '>= 5.0.7'
@@ -22,9 +22,9 @@ group :development do
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.3.1'
-gem 'devise', '>= 4.7.1'
+gem 'devise', '>= 4.5.0'
 gem 'high_voltage'
-gem 'jquery-rails', '>= 4.4.0'
+gem 'jquery-rails', '>= 4.3.3'
 group :development do
   gem 'better_errors', '>= 2.5.0'
   gem 'rails_apps_pages'
